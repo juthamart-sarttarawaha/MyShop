@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyShop.Core.Contracts;
 using MyShop.Core.Models;
 using MyShop.Core.ViewModels;
 using MyShop.DataAccess.InMemory;
@@ -11,13 +12,19 @@ namespace MyShop.WebUI.Controllers
 {
     public class ProductManagerController : Controller
     {
-        InMemoryRepository<Product> context;
-        InMemoryRepository<ProductCategory> ProductCategories;
-     //   ProductCategoryRepository ProductCategories;
-        public ProductManagerController()
+        IRepository<Product> context;
+        IRepository<ProductCategory> productCategories;
+
+        //InMemoryRepository<Product> context;
+        //InMemoryRepository<ProductCategory> ProductCategories;
+        //ProductCategoryRepository ProductCategories;
+        public ProductManagerController(IRepository<Product> productContext, IRepository<ProductCategory> productCategoryContext)
         {
-            context = new InMemoryRepository<Product>();
-            ProductCategories = new InMemoryRepository<ProductCategory>();
+            context = productContext;
+            productCategories = productCategoryContext;
+
+            //  context = new InMemoryRepository<Product>();
+            // ProductCategories = new InMemoryRepository<ProductCategory>();
         }
         // GET: ProductManager
         public ActionResult Index()
@@ -31,10 +38,10 @@ namespace MyShop.WebUI.Controllers
         {
             ProductManagerViewModel viewModel = new ProductManagerViewModel();
             viewModel.product = new Product();
-            viewModel.ProductCategories = ProductCategories.Collection();
+            viewModel.ProductCategories = productCategories.Collection();
             return View(viewModel);
-          //  Product product = new Product();
-          //  return View(product);
+            //  Product product = new Product();
+            //  return View(product);
         }
 
         [HttpPost]
@@ -63,7 +70,7 @@ namespace MyShop.WebUI.Controllers
             {
                 ProductManagerViewModel viewModel = new ProductManagerViewModel();
                 viewModel.product = product;
-                viewModel.ProductCategories = ProductCategories.Collection();
+                viewModel.ProductCategories = productCategories.Collection();
                 return View(viewModel);
             }
         }
