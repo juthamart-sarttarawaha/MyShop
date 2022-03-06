@@ -1,2 +1,6 @@
 ﻿1.Enable-Migrations
 2.Add-Migration Initial
+3.Update-Database
+
+4.Add-Migration AddBasket
+5.Update-Database
