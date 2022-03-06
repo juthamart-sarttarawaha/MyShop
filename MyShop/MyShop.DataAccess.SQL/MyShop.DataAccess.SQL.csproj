@@ -49,6 +49,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
+    <Compile Include="Migrations\202203061444193_InitialCreate.cs" />
+    <Compile Include="Migrations\202203061444193_InitialCreate.Designer.cs">
+      <DependentUpon>202203061444193_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203061517217_AddCustomers.cs" />
+    <Compile Include="Migrations\202203061517217_AddCustomers.Designer.cs">
+      <DependentUpon>202203061517217_AddCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLRepository.cs" />
   </ItemGroup>
@@ -64,6 +73,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EntityFramworkNote.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202203061444193_InitialCreate.resx">
+      <DependentUpon>202203061444193_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203061517217_AddCustomers.resx">
+      <DependentUpon>202203061517217_AddCustomers.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

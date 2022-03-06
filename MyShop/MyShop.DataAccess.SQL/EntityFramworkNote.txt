@@ -4,3 +4,6 @@
 
 4.Add-Migration AddBasket
 5.Update-Database
+
+6. Add-Migration AddCustomers
+7. Update-Database
